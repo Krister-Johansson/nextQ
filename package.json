@@ -5,8 +5,11 @@
   "main": "bin/www.js",
   "scripts": {
     "start": "node ./bin/www.js",
-    "install": "bower install && gulp",
+    "postinstall": "bower install && gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "6.3.1"
   },
   "repository": {
     "type": "git",
@@ -28,9 +31,7 @@
     "express": "^4.15.3",
     "morgan": "^1.8.2",
     "pug": "^2.0.0-rc.2",
-    "serve-favicon": "^2.4.3"
-  },
-  "devDependencies": {
+    "serve-favicon": "^2.4.3",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-minify-css": "^1.2.4",
@@ -38,5 +39,8 @@
     "gulp-sourcemaps": "^2.6.0",
     "gulp-uglifyjs": "^0.6.2",
     "gulp-util": "^3.0.8"
+  },
+  "devDependencies": {
+    
   }
 }
