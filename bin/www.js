@@ -1,21 +1,20 @@
-var app = require('../app');
-var http = require('http');
+"use strict";
 
-var port = (process.env.PORT || '3000');
+const app = require('../app.js');
+const http = require('http');
+
+const server = http.createServer(app);
+const port = (process.env.PORT || '3000');
+
 app.set('port', port);
 
-var server = http.createServer(app);
-
 server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
 
-function onError (error) {
-    console.error(error);
-    process.exit(1);
-}
+server.on('error', (error) => {
+  throw new Error(error);
+});
 
-function onListening() {
-  var addr = server.address();
+server.on('listening', () => {
+  let addr = server.address();
   console.log('Listening on ' + addr.port);
-}
+});

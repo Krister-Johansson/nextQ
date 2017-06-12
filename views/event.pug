@@ -1,0 +1,37 @@
+extends ./layouts/main
+
+block content
+    .page-header
+        h2=event.name
+            span(class='label label-' + event.status.lable)=event.status.text
+
+    .row
+        .col-md-12
+                form(role='form', action='/event/' + event.id ,method='post', style='max-width: 300px;')
+                    .form-group
+                        input.form-control(type='text', name='name', placeholder='Ange Name')
+                    .form-group
+                        input.form-control(type='text', name='phonenumber', placeholder='Ange Mobilnumer')
+                    .form-group
+                        select.form-control(name='time')
+                            each available in event.availables
+                                option(value=available.id) #{available.friendlyTime}
+                    button.btn.btn-default(type='submit') Anmäl
+    .row
+        .col-md-12            
+            table#listEvent.table
+                thad
+                    tr
+                        th Tid
+                        th Namn
+                        th Nummer
+                        th 
+                tbody
+                    each attendee in event.attendees
+                        tr
+                            td #{attendee.time}
+                            td #{attendee.phonenumber}
+                            td #{attendee.name}
+                            td
+                                button.btn.btn-sm.btn-danger(type='button')
+                                    span.glyphicon.glyphicon-trash(aria-hidden='true')

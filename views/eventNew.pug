@@ -1,0 +1,19 @@
+extends ./layouts/main
+
+block content
+    h1 Skapa nytt event
+    form(action='/event' method='post')
+        .form-group
+            label(for='name') Namn
+            input#name.form-control(name='name' type='text', placeholder='name')
+        .form-group
+            label(for='startAt') Startar
+            input#startAt.form-control(name='startAt' type='datetime-local')
+        .form-group
+            label(for='endAt') Slutar
+            input#endAt.form-control(name='endAt' type='datetime-local')
+        .form-group
+            label(for='interval') Hur länge är varje "möte" i minuter?
+            input#interval.form-control(name='interval' type='number')
+        button.btn.btn-success(type='submit') Skapa
+        a.btn.btn-danger(href='/event' type='button') Avbryt
